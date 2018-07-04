@@ -9,12 +9,12 @@ const solc = require('solc');
 // creating a path to read our inbox.sol file . 
 // we use __dirname because npm uses it to refer to 
 // the root folder in any platform
-const inboxPath = path.resolve(__dirname, 'contracts', 'inbox.sol')
+const lotteryPath = path.resolve(__dirname, 'contracts', 'lottery.sol')
 
 
 // the function below is for reading the inbox.sol file
 // you pass in the path and the encryption in of the file
-const source = fs.readFileSync(inboxPath, 'utf8');
+const source = fs.readFileSync(lotteryPath, 'utf8');
 
 // how to compile
 
@@ -26,5 +26,5 @@ const source = fs.readFileSync(inboxPath, 'utf8');
 // interface is the javascrpt ABI
 // byte is the actual raw compiled contract
 // make sure you write exports instead of export it messes up you code
-module.exports = solc.compile(source, 1).contracts[':Inbox'];
+module.exports = solc.compile(source, 1).contracts[':Lottery'];
 

@@ -91,7 +91,22 @@ describe ("lotter contract", ()=>{
             
         }
 
+        // a test to make sure only the manager can pick a winner
 
+        it('only manager can access the get wwinner call', async () => {
+
+                try {
+                    await lottery.methods.pickWinner().send({
+                       from : accounts[1] 
+                    });
+                    assert(false)
+                } catch (error) {
+                    assert(error);
+                    
+                }
+            
+            
+        });
     });
 
 });

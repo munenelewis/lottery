@@ -109,4 +109,31 @@ describe ("lotter contract", ()=>{
         });
     });
 
+    // a test that test every function in our code from top to bottom
+
+    it('can run from end to end', async ()=>{
+        await lottery.methods.enter().send({
+            from: accounts[0],
+            value: web3.utils.toWei('2', 'ether')
+
+        });
+        //getBalance function return the number of weis in the account
+
+        const initialBalance = await web3.eth.getBalance(accounts[0]);
+
+        await lottery.methods.pickWinner().send({
+            from: accounts[0]
+
+        });
+
+        const finalbalance = await web3.eth.getBalance(accounts[0]);
+
+        const  difference = finalbalance - initialBalance;
+        console.log(difference);
+        
+        assert(difference> web3.utils.toWei('1.8', 'ether'));
+
+
+    });
+
 });
